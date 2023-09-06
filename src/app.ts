@@ -12,6 +12,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // routes
-app.use(router);
+app.use("/mean-compose", router);
 
 export default app;

@@ -1,28 +1,12 @@
 import { Router } from "express";
-import Item from "../models/Item";
+import { itemController } from "../controllers/item.controller";
 
 const router = Router();
 
-router.get("/items", async (req, res) => {
-  const result = await Item.find();
-  res.send(result);
-});
-
-router.get("/items/:name", async (req, res) => {
-  const name = req.body.name;
-
-  const result = await Item.findOne({ name: name });
-  res.send(result);
-});
-
-router.post("/items/create", async (req, res) => {
-  const item = new Item({
-    name: req.body.name,
-    price: req.body.price,
-  });
-
-  const result = await item.save();
-  res.send(result);
-});
+router.get("/items", itemController.getAll);
+router.get("/item/:name", itemController.getByName);
+router.post("/item", itemController.create);
+router.put("/item/:name", itemController.updateByName);
+router.delete("/item/:name", itemController.deleteByName);
 
 export default router;
