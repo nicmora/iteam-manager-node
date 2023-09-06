@@ -1,16 +1,16 @@
 import { Item, ItemSchema } from "../models/Item";
 
 class ItemService {
-  findAll = (): Promise<Item[]> => {
-    return ItemSchema.find();
+  findAll = async (): Promise<Item[]> => {
+    return await ItemSchema.find();
   };
 
-  findByName = (name: string): Promise<Item | null> => {
-    return ItemSchema.findOne({ name: name });
+  findByName = async (name: string): Promise<Item | null> => {
+    return await ItemSchema.findOne({ name: name });
   };
 
-  create = (newItem: Item): Promise<Item> => {
-    return ItemSchema.validate(newItem)
+  create = async (newItem: Item): Promise<Item> => {
+    return await ItemSchema.validate(newItem)
       .then(() =>
         ItemSchema.create(newItem)
           .then((result) => result)
@@ -19,8 +19,8 @@ class ItemService {
       .catch((err) => err);
   };
 
-  updateByName = (name: string, data: Item): Promise<Item> => {
-    return ItemSchema.findOneAndUpdate(
+  updateByName = async (name: string, data: Item): Promise<Item> => {
+    return await ItemSchema.findOneAndUpdate(
       { name: name },
       { name: data.name, price: data.price },
       { new: true }
@@ -29,8 +29,8 @@ class ItemService {
       .catch((err) => err);
   };
 
-  deleteByName = (name: string): Promise<void> => {
-    return ItemSchema.findOneAndDelete({ name: name })
+  deleteByName = async (name: string): Promise<void> => {
+    return await ItemSchema.findOneAndDelete({ name: name })
       .then((result) => result)
       .catch((err) => err);
   };

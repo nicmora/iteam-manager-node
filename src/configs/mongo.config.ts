@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_DATABASE } = process.env;
 
-(async () => {
+(async (): Promise<void> => {
   await mongoose
     .connect(
       `mongodb://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_DATABASE}?authSource=admin`
@@ -11,7 +11,7 @@ const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_DATABASE } = process.env;
     .then((db) => {
       console.log("Database is connected to: ", db.connection.name);
     })
-    .catch((e) => {
-      console.error(e);
+    .catch((err) => {
+      console.error(err);
     });
 })();
