@@ -1,1 +1,1 @@
-# mean-compose
+# item-manager-node
