@@ -4,9 +4,9 @@ import { itemController } from "../controllers/item.controller";
 const router = Router();
 
 router.get("/items", itemController.getAll);
-router.get("/item/:name", itemController.getByName);
-router.post("/item", itemController.create);
-router.put("/item/:name", itemController.updateByName);
-router.delete("/item/:name", itemController.deleteByName);
+router.get("/items/:name", itemController.getByName);
+router.post("/items", itemController.create);
+router.put("/items/:name", itemController.updateByName);
+router.delete("/items/:name", itemController.deleteByName);
 
 export default router;

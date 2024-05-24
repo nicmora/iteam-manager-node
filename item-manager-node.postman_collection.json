@@ -19,7 +19,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"hola\",\n    \"price\": 100\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -27,12 +27,11 @@
 							}
 						},
 						"url": {
-							"raw": "{{NODEJS_URL}}/mean-compose/api/v1/items",
+							"raw": "{{ITEM_MANAGER_NODE_URL}}/api/v1/items",
 							"host": [
-								"{{NODEJS_URL}}"
+								"{{ITEM_MANAGER_NODE_URL}}"
 							],
 							"path": [
-								"mean-compose",
 								"api",
 								"v1",
 								"items"
@@ -47,16 +46,21 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{NODEJS_URL}}/mean-compose/api/v1/item/apple",
+							"raw": "{{ITEM_MANAGER_NODE_URL}}/api/v1/items/:item",
 							"host": [
-								"{{NODEJS_URL}}"
+								"{{ITEM_MANAGER_NODE_URL}}"
 							],
 							"path": [
-								"mean-compose",
 								"api",
 								"v1",
-								"item",
-								"apple"
+								"items",
+								":item"
+							],
+							"variable": [
+								{
+									"key": "item",
+									"value": ""
+								}
 							]
 						}
 					},
@@ -77,15 +81,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{NODEJS_URL}}/mean-compose/api/v1/item",
+							"raw": "{{ITEM_MANAGER_NODE_URL}}/api/v1/items",
 							"host": [
-								"{{NODEJS_URL}}"
+								"{{ITEM_MANAGER_NODE_URL}}"
 							],
 							"path": [
-								"mean-compose",
 								"api",
 								"v1",
-								"item"
+								"items"
 							]
 						}
 					},
@@ -98,7 +101,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"car\",\n    \"price\": 100\n}",
+							"raw": "{\n    \"name\": \"\",\n    \"price\": 0\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -106,16 +109,21 @@
 							}
 						},
 						"url": {
-							"raw": "{{NODEJS_URL}}/mean-compose/api/v1/item/clock",
+							"raw": "{{ITEM_MANAGER_NODE_URL}}/api/v1/items/:item",
 							"host": [
-								"{{NODEJS_URL}}"
+								"{{ITEM_MANAGER_NODE_URL}}"
 							],
 							"path": [
-								"mean-compose",
 								"api",
 								"v1",
-								"item",
-								"clock"
+								"items",
+								":item"
+							],
+							"variable": [
+								{
+									"key": "item",
+									"value": ""
+								}
 							]
 						}
 					},
@@ -127,16 +135,21 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{NODEJS_URL}}/mean-compose/api/v1/item/car",
+							"raw": "{{ITEM_MANAGER_NODE_URL}}/api/v1/items/:item",
 							"host": [
-								"{{NODEJS_URL}}"
+								"{{ITEM_MANAGER_NODE_URL}}"
 							],
 							"path": [
-								"mean-compose",
 								"api",
 								"v1",
-								"item",
-								"car"
+								"items",
+								":item"
+							],
+							"variable": [
+								{
+									"key": "item",
+									"value": ""
+								}
 							]
 						}
 					},
@@ -154,7 +167,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"hola\",\n    \"price\": 100\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -162,12 +175,11 @@
 					}
 				},
 				"url": {
-					"raw": "{{NODEJS_URL}}/mean-compose/health",
+					"raw": "{{ITEM_MANAGER_NODE_URL}}/health",
 					"host": [
-						"{{NODEJS_URL}}"
+						"{{ITEM_MANAGER_NODE_URL}}"
 					],
 					"path": [
-						"mean-compose",
 						"health"
 					]
 				}

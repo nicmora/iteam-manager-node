@@ -1,34 +1,42 @@
-version: "3.9"
-services:
+name: item-manager-node
 
-  app:
-    container_name: app
-    depends_on:
-      - mongodb
-    build: .
+services:
+  mongo_db:
+    image: mongo:latest
+    container_name: mongo_db
     restart: unless-stopped
-    env_file: ./.env
+    ports:
+      - "27017:27017"
+    #environment:
+    #- MONGO_INITDB_ROOT_USERNAME=admin
+    #- MONGO_INITDB_ROOT_PASSWORD=password
+    #- MONGO_INITDB_DATABASE=itemdb
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - itemnet
+
+  node_app:
+    build: .
+    container_name: node_app
+    restart: unless-stopped
     ports:
       - "3000:3000"
+    depends_on:
+      - mongo_db
+    env_file: ./.env
     environment:
       - DB_USER=$DB_USER
       - DB_PASSWORD=$DB_PASSWORD
-      - DB_HOST=mongodb
+      - DB_HOST=mongo_db
       - DB_PORT=$DB_PORT
       - DB_DATABASE=$DB_DATABASE
-
-  mongodb:
-    container_name: mongodb
-    image: mongo:7
-    restart: unless-stopped
-    env_file: ./.env
-    ports:
-      - "27017:27017"
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=$DB_USER
-      - MONGO_INITDB_ROOT_PASSWORD=$DB_PASSWORD
-    volumes:
-      - db:/data/db
+    networks:
+      - itemnet
 
 volumes:
-  db:
+  mongo_data:
+
+networks:
+  itemnet:
+    driver: bridge

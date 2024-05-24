@@ -12,6 +12,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // routes
-app.use("/mean-compose", router);
+app.use("/item-manager-node", router);
 
 export default app;
